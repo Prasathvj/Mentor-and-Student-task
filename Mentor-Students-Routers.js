@@ -3,7 +3,7 @@ import { Mentor, Student } from "./mentor-student-Schema.js";
 
 const router = express.Router();
 
-//Create mentor API
+//1.Create mentor API
 
 router.post("/mentors", async (req, res) => {
     try {
@@ -15,7 +15,7 @@ router.post("/mentors", async (req, res) => {
     }
   });
   
-  //Create Student API
+  //2.Create Student API
   router.post("/students", async (req, res) => {
     try {
       const student = await Student.create(req.body);
@@ -26,7 +26,7 @@ router.post("/mentors", async (req, res) => {
     }
   });
   
-  //assign a student to a mentor
+  //3.assign a student to a mentor
  router.put("/students/:studentId/assign-mentor/:mentorId", async (req, res) => {
     try {
       const { studentId, mentorId } = req.params;
@@ -43,7 +43,7 @@ router.post("/mentors", async (req, res) => {
     }
   });
   
-  //add multiple students to a mentor.
+  //i.add multiple students to a mentor.
   router.put('/mentors/:mentorId/add-students', async (req, res)=>{
       try {
           const { mentorId } = req.params;
@@ -66,7 +66,7 @@ router.post("/mentors", async (req, res) => {
       }
   });
   
-  //assign or change the mentor for a particular student.
+  //4.assign or change the mentor for a particular student.
    router.put('/students/:studentId/assign-mentor/:mentorId',
    async (req, res) => {
       try {
@@ -80,7 +80,7 @@ router.post("/mentors", async (req, res) => {
       }
    });
   
-   //show all students for a particular mentor.
+   //5.show all students for a particular mentor.
    router.get('/mentors/:mentorId/students', async (req, res) => {
       try {
           const { mentorId } = req.params;
@@ -93,7 +93,7 @@ router.post("/mentors", async (req, res) => {
       }
    });
   
-  //show the previously assigned mentor for a particular student.
+  //6.show the previously assigned mentor for a particular student.
   
   router.get('/students/:studentId/previous-mentor', async (req, res) =>{
       try {
